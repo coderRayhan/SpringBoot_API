@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: SmartHR
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employees
+    username: postgres
+    password: Rakib1523@@
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+
+  jpa:
+    # Hibernate JPA properties
+    hibernate:
+      ddl-auto: update  # Set to "none" for production or "create" for the first time
+    show-sql: false
+    database: postgresql
+    open-in-view: false
+    generate-ddl: true
