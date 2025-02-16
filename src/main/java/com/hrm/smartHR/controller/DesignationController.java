@@ -7,11 +7,16 @@ import com.hrm.smartHR.service.DesignationService;
 import com.hrm.smartHR.utils.AppUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/designation")
+@EnableScheduling
 public class DesignationController implements BaseController<BaseResponse, DesignationDto, HttpServletRequest> {
 
     private final AppUtils commonUtils;
@@ -80,5 +85,10 @@ public class DesignationController implements BaseController<BaseResponse, Desig
     @Override
     public BaseResponse getPageableList(int page, int size, String searchValue, HttpServletRequest request) {
         return null;
+    }
+
+    @Scheduled(fixedDelay = 5000)
+    public void print(){
+        System.out.println("Current time is: "+ new Date());
     }
 }
